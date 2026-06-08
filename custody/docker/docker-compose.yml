@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: custody-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: custody
+      TZ: Asia/Shanghai
+    volumes:
+      - ./mysql/data:/data
+#      - mysql_data:/var/lib/mysql
+    restart: always
+#    healthcheck:
+#      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+#      interval: 5s
+#      timeout: 5s
+#      retries: 10
+
+  redis:
+    image: redis:latest
+    container_name: custody-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/data
+#      - redis_data:/data
+    restart: always
+    # 开启 AOF 持久化
+    command:
+      - redis-server
+      - --appendonly
+      - yes
+      - --appendfilename
+      - appendonly.aof
