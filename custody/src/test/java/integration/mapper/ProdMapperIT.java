@@ -1,30 +1,22 @@
-package integration;
+package integration.mapper;
 
 import com.m42.custody.entity.ProdEntity;
 import com.m42.custody.mapper.ProdMapper;
+import integration.BaseIntegrationTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.testcontainers.junit.jupiter.Container;
-import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.mysql.MySQLContainer;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
-@Testcontainers
-public class ProdMapperIT {
-    @Container
-    private static final MySQLContainer mysql = new MySQLContainer("mysql:8.0");
-
+public class ProdMapperIT extends BaseIntegrationTest {
     @Autowired
     private ProdMapper prodMapper;
 
     @Test
     void testSelectAll() {
         List<ProdEntity> list = prodMapper.selectList(null);
-        assertNotNull(list);
+        assertThat(list).isNotNull();
     }
 }

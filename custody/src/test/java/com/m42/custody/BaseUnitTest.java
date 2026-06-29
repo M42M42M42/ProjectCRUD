@@ -1,4 +1,8 @@
-package com.m42.custody.service;
+package com.m42.custody;
 
-public class BaseUnitTest {
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
+public abstract class BaseUnitTest {
 }

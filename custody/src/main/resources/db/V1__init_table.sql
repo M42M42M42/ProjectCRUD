@@ -1,5 +1,3 @@
-USE custody;
-
 DROP TABLE IF EXISTS t_prod_base_info;
 DROP TABLE IF EXISTS t_product_msg;
 

@@ -1,5 +1,6 @@
 package com.m42.custody.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.m42.custody.common.Result;
 import com.m42.custody.dto.MsgDTO;
 import com.m42.custody.entity.MsgEntity;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class MsgServiceImpl implements MsgService {
+public class MsgServiceImpl extends ServiceImpl<MsgMapper, MsgEntity> implements MsgService {
     @Autowired
     private StringRedisTemplate redisTemplate;
     @Autowired

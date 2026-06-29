@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.m42.custody.mapper.MsgMapper">
+<!--    <insert id="addUserRole">-->
+<!--        INSERT INTO sys_user_role (user_id, role_id)-->
+<!--        VALUES (#{userId, jdbcType=INTEGER}, #{roleId, jdbcType=INTEGER})-->
+<!--    </insert>-->
+
+<!--    <select id="getUserByUsername" resultType="com.m42.simple_mall.model.po.User">-->
+<!--        SELECT id, username, password-->
+<!--        FROM sys_user-->
+<!--        WHERE username = #{username}-->
+<!--    </select>-->
+
+<!--    <insert id="insert" useGeneratedKeys="true" keyProperty="id">-->
+<!--        INSERT INTO sys_user (username, password)-->
+<!--        VALUES ( #{username}, #{password} )-->
+<!--    </insert>-->
+
+<!--    <insert id="insertBatch">-->
+<!--        INSERT INTO sys_user (username, password)-->
+<!--        VALUES-->
+<!--        <foreach collection="userList" item="user" separator=",">-->
+<!--            ( #{user.username}, #{user.password} )-->
+<!--        </foreach>-->
+<!--    </insert>-->
+
+<!--    <select id="selectList" resultType="com.m42.simple_mall.model.po.User">-->
+<!--        SELECT id, username, password-->
+<!--        FROM sys_user-->
+<!--    </select>-->
+</mapper>

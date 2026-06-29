@@ -1,5 +1,6 @@
 package com.m42.custody.service;
 
+import com.m42.custody.BaseUnitTest;
 import com.m42.custody.common.Result;
 import com.m42.custody.dto.MsgDTO;
 import com.m42.custody.entity.MsgEntity;
@@ -7,10 +8,8 @@ import com.m42.custody.mapper.MsgMapper;
 import com.m42.custody.service.impl.MsgServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 
@@ -21,8 +20,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
-public class MsgServiceTest {
+public class MsgServiceTest extends BaseUnitTest {
     @Mock
     private MsgMapper msgMapper;
 
