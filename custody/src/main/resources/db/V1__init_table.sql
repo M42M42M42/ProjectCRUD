@@ -12,11 +12,11 @@ CREATE TABLE t_prod_base_info (
     status VARCHAR(2) DEFAULT '1',
     gmt_create DATETIME,
     gmt_modified DATETIME
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='托管产品基础表'；
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='托管产品基础表';
 
 CREATE TABLE t_product_msg (
-    id BIGINT NOTNULL PRIMARY KEY,
+    id BIGINT NOT NULL PRIMARY KEY,
     msg_no VARCHAR(64) NOT NULL UNIQUE,
     prod_code VARCHAR(32),
     msg_body TEXT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='报文记录表'；
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='报文记录表';

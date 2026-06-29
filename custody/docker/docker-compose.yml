@@ -10,14 +10,14 @@ services:
       MYSQL_DATABASE: custody
       TZ: Asia/Shanghai
     volumes:
-      - ./mysql/data:/data
-#      - mysql_data:/var/lib/mysql
-    restart: always
-#    healthcheck:
-#      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-#      interval: 5s
-#      timeout: 5s
-#      retries: 10
+      - custody_mysql_data:/var/lib/mysql
+#    restart: always
+    healthcheck:
+      # 确保 MySQL 真正可用了再让别的服务连接
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   redis:
     image: redis:latest
@@ -25,8 +25,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./redis/data:/data
-#      - redis_data:/data
+      - custody_redis_data:/data
     restart: always
     # 开启 AOF 持久化
     command:
@@ -35,3 +34,7 @@ services:
       - yes
       - --appendfilename
       - appendonly.aof
+
+volumes:
+  custody_mysql_data:
+  custody_redis_data:
