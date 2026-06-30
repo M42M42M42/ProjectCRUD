@@ -149,4 +149,73 @@ public class UserMapperIT extends BaseIntegrationTest {
         assertThat(result2).isEmpty();
         assertThat(result3).isEmpty();
     }
+
+    @Test
+    void test_update_username_success() {
+        UserEntity user = UserEntity.builder()
+                .username("test_user_001")
+                .password("123456")
+                .email("test_user_001@test.com")
+                .build();
+        userMapper.insertUser(user);
+
+        user.setUsername("username_changed");
+        int rows = userMapper.updateUserSelective(user);
+
+        UserEntity queryParam = UserEntity.builder()
+                .id(user.getId())
+                .build();
+        List<UserEntity> result = userMapper.selectUserList(queryParam);
+        assertThat(rows) .isEqualTo(1);
+        assertThat(result).hasSize(1);
+        assertThat(result.getFirst().getUsername()).isEqualTo("username_changed");
+        assertThat(result.getFirst().getPassword()).isEqualTo("123456");
+        assertThat(result.getFirst().getEmail()).isEqualTo("test_user_001@test.com");
+    }
+
+    @Test
+    void test_update_password_success() {
+        UserEntity user = UserEntity.builder()
+                .username("test_user_001")
+                .password("123456")
+                .email("test_user_001@test.com")
+                .build();
+        userMapper.insertUser(user);
+
+        user.setPassword("password_changed");
+        int rows = userMapper.updateUserSelective(user);
+
+        UserEntity queryParam = UserEntity.builder()
+                .id(user.getId())
+                .build();
+        List<UserEntity> result = userMapper.selectUserList(queryParam);
+        assertThat(rows) .isEqualTo(1);
+        assertThat(result).hasSize(1);
+        assertThat(result.getFirst().getUsername()).isEqualTo("test_user_001");
+        assertThat(result.getFirst().getPassword()).isEqualTo("password_changed");
+        assertThat(result.getFirst().getEmail()).isEqualTo("test_user_001@test.com");
+    }
+
+    @Test
+    void test_update_email_success() {
+        UserEntity user = UserEntity.builder()
+                .username("test_user_001")
+                .password("123456")
+                .email("test_user_001@test.com")
+                .build();
+        userMapper.insertUser(user);
+
+        user.setEmail("email_changed@test.com");
+        int rows = userMapper.updateUserSelective(user);
+
+        UserEntity queryParam = UserEntity.builder()
+                .id(user.getId())
+                .build();
+        List<UserEntity> result = userMapper.selectUserList(queryParam);
+        assertThat(rows) .isEqualTo(1);
+        assertThat(result).hasSize(1);
+        assertThat(result.getFirst().getUsername()).isEqualTo("test_user_001");
+        assertThat(result.getFirst().getPassword()).isEqualTo("123456");
+        assertThat(result.getFirst().getEmail()).isEqualTo("email_changed@test.com");
+    }
 }

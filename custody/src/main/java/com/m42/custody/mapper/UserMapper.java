@@ -19,4 +19,6 @@ public interface UserMapper {
     List<UserEntity> selectUserList(UserEntity user);
 
     int deleteBatch(@Param("idList") List<Long> idList);
+
+    int updateUserSelective(UserEntity user);
 }

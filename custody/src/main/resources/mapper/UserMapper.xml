@@ -11,7 +11,7 @@
         SELECT id, username, password, email
         FROM sys_user
         <where>
-            <if test="id != null and id != ''">
+            <if test="id != null">
                 AND id = #{id}
             </if>
             <if test="username != null and username != ''">
@@ -30,4 +30,14 @@
             #{id}
         </foreach>
     </delete>
+    
+    <update id="updateUserSelective" parameterType="com.m42.custody.entity.UserEntity">
+        UPDATE sys_user
+        <set>
+            <if test="username != null and username != ''">username = #{username},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="email != null and email != ''">email = #{email},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
 </mapper>
