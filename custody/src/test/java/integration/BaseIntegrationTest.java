@@ -35,5 +35,6 @@ public class BaseIntegrationTest {
     void globalCleanUp() {
         jdbcTemplate.execute("DELETE FROM t_prod_base_info");
         jdbcTemplate.execute("DELETE FROM t_product_msg");
+        jdbcTemplate.execute("DELETE FROM sys_user");
     }
 }
