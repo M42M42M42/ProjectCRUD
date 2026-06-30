@@ -2,6 +2,7 @@ package com.m42.custody.mapper;
 
 import com.m42.custody.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,5 +15,8 @@ public interface UserMapper {
 //    UserEntity selectById(Long id);
 
     int insertUser(UserEntity user);
+
     List<UserEntity> selectUserList(UserEntity user);
+
+    int deleteBatch(@Param("idList") List<Long> idList);
 }
